@@ -179,6 +179,7 @@
       
       <!-- 矩形工具组件 -->
       <RectangleTool
+        ref="rectangleToolRef"
         :is-active="currentTool === 'rectangle'"
         :canvas-width="canvasWidth"
         :canvas-height="canvasHeight"
@@ -246,6 +247,7 @@ const drawLineRef = ref<InstanceType<typeof DrawLine> | null>(null)
 const drawBrushRef = ref<InstanceType<typeof DrawBrush> | null>(null)
 const reshapeRef = ref<InstanceType<typeof Reshape> | null>(null)
 const circleToolRef = ref<InstanceType<typeof CircleTool> | null>(null)
+  const rectangleToolRef = ref<InstanceType<typeof RectangleTool> | null>(null)
 
 // 导入导出管理器
 let importExportManager: ImportExportManager | null = null
@@ -257,6 +259,7 @@ const initEventDelegator = (): void => {
     brush: drawBrushRef.value as ToolHandler,
     reshape: reshapeRef.value as ToolHandler,
     circle: circleToolRef.value as ToolHandler,
+    rectangle: rectangleToolRef.value as ToolHandler,
   })
 
   canvasEventDelegator.setCurrentTool(currentTool.value)
